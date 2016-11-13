@@ -1,0 +1,33 @@
+body {
+	padding-left: 5%;
+	padding-right: 5%;
+ 	padding-bottom: 20px;
+}
+img {
+	max-width: 100%;
+}
+.header { 
+	text-align: center;
+	height: 275px;
+	background: url("https://i.mycdn.me/image?t=35&bid=837571923582&id=837571923582&plc=WEB&tkn=*jdIBIYSbpPPYFsXE-lwmHLoEW0A") 50% 30px no-repeat;
+}
+.main {
+
+}
+.left {
+	padding-bottom: 20px;
+	background-color: #F2F2F2;
+	border-radius: 5px;
+}
+.right {
+
+	padding-top: 10px;
+}
+button {
+	padding-top: 10px;
+	vertical-align: middle;
+}
+li:hover {
+	background-color: #A9E2F3;
+	border-radius: 2px;
+}

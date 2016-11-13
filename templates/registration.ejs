@@ -1,0 +1,30 @@
+<% layout('layout/page') -%>
+
+<div class="row main">
+    <div class="left col-md-9">
+        <form class="form-horizontal registration-form" role="form" method="post">
+            <div class="form-group form-group-sm">
+                <label for="name" class="col-sm-3 control-label">Ім'я</label>
+                <div class="col-sm-9">
+                    <input name="name" type="text" class="form-control" placeholder="Ім'я" required>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="mail" class="col-sm-3 control-label">E-mail</label>
+                <div class="col-sm-9">
+                    <input name="mail" type="text" class="form-control" placeholder="E-mail" required>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="password" class="col-sm-3 control-label">Пароль</label>
+                <div class="col-sm-9">
+                    <input name="password" type="password" class="form-control" placeholder="Пароль" required>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-default">Зареєструватися</button>
+                </div>
+            </div>
+        </form>
+    </div>

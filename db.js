@@ -2,11 +2,11 @@ var mysql      = require('mysql');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 var options = {
-    host     : 'localhost',
+    host     : 172.30.183.76,
     port     : 3306,
-    user     : 'root',
+    user     : 'princeUA',
     password : 'MarconiUA',
-    database : 'petryk'
+    database : 'petrykdb'
 };
 var connection = mysql.createConnection(options);
 var mySession = new MySQLStore(options);

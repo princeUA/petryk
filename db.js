@@ -5,7 +5,7 @@ var options = {
     host     : 172.30.183.76,
     port     : 3306,
     user     : 'princeUA',
-    password : 'MarconiUA',
+    password : 'Marconi92',
     database : 'petrykdb'
 };
 var connection = mysql.createConnection(options);

@@ -7,8 +7,9 @@ img {
 	max-width: 100%;
 }
 .header { 
+	height: 275px;	
 	text-align: center;
-	background: url("https://i.mycdn.me/image?t=35&bid=837571923582&id=837571923582&plc=WEB&tkn=*jdIBIYSbpPPYFsXE-lwmHLoEW0A") 100% 30px no-repeat;
+	background: url("https://i.mycdn.me/image?t=35&bid=837571923582&id=837571923582&plc=WEB&tkn=*jdIBIYSbpPPYFsXE-lwmHLoEW0A") 50% 30px no-repeat;
 }
 .main {
 

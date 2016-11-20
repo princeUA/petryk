@@ -4,7 +4,6 @@ var util = require('util');
 
 exports.reg = function(mail, name, password, callback) {
     db.connection.query('SELECT * FROM users WHERE mail = ?', mail, function(err, result) {
-        console.log(result[0]);
         if(err) callback(new AuthError(err));
         else if(result[0]!== undefined) {
             callback(new AuthError("Ця пошта вже використовується"));

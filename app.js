@@ -59,6 +59,6 @@ app.use(function (err, req, res, next) {
     }
 });
 
-http.createServer(app).listen(process.env.PORT || 3000, function () {
-    log.info('Express server listening on port ' + process.env.PORT);
+http.createServer(app).listen(process.env.PORT != undefined ? process.env.PORT : 3000, function () {
+    log.info('Express server listening on port ' + process.env.PORT != undefined ? process.env.PORT : 3000);
 });

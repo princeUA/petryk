@@ -1,4 +1,5 @@
 var login = require('routes/login');
+<<<<<<< HEAD
 var db = require('db');
 
 
@@ -7,6 +8,9 @@ exports.get = function (req, res, next) {
         if(err) next(new HttpError(err));
         res.render('news', {news: news});
     });
+=======
+var db = require('db.js');
+>>>>>>> origin/master
 
 };
 

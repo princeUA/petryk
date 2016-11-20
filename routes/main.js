@@ -5,7 +5,12 @@ exports.get = function (req, res) {
 };
 
 exports.post = function(req, res, next) {
-    login.login(req, res, next);
+    if(req.body.login == '') {
+        login.login(req, res, next);
+    }
+    else if(req.body.edit == '') {
+
+    }
     
 };
 

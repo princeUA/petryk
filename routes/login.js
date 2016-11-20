@@ -11,7 +11,7 @@ exports.login = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            req.session.user = user[0].name;
+            req.session.user = user[0];
             res.redirect('#');
         });
     } else {

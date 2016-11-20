@@ -1,4 +1,3 @@
-var HttpError = require('error').HttpError;
 var user = require('models/user');
 
 exports.get = function (req, res, next) {

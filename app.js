@@ -59,6 +59,6 @@ app.use(function (err, req, res, next) {
     }
 });
 
-http.createServer(app).listen(config.get('port'), function () {
+http.createServer(app).listen(config.get('port') || 8080, function () {
     log.info('Express server listening on port ' + config.get('port'));
 });

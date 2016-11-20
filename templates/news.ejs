@@ -5,9 +5,11 @@
     <div class="left col-md-9">
         <div class="adm">
             <% if(role == "admin") {%>
-                <button type="submit" class="btn btn-default btn-xs" formaction="/add" formmethod="get" title="Додати новину">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
+                <form class="btn-group" role="form" action="/add" method="get">
+                    <button type="submit" class="btn btn-default btn-xs" title="Додати новину">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </form>
             <% } %>
         </div>
         <% for(var i = news.length - 1; news[i] != undefined; i--) { %>

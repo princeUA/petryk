@@ -13,6 +13,7 @@ img {
 .head {
 	position: absolute;
 	width: 100%;
+	font-style: italic;
 }
 .top-img {
 	margin-top: 5%;

@@ -19,13 +19,14 @@ img {
 	margin-top: 5%;
 }
 .main {
-
+	margin: 0px;
 }
 .left {
 	padding-bottom: 20px;
 }
 .news {
 	margin-bottom: 10px;
+	padding: 10px;
 	background-color: #F2F2F2;
 	border-radius: 5px;
 }
@@ -33,7 +34,6 @@ img {
 	float: right;
 }
 .right {
-
 	padding-top: 10px;
 }
 button {

@@ -14,6 +14,12 @@ img {
 	position: absolute;
 	width: 100%;
 }
+.title1 {
+	 font-size: 2em;
+ }
+.title2 {
+	font-size: 3em;
+}
 .top-img {
 	margin-top: 5%;
 }

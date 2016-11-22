@@ -10,6 +10,7 @@ img {
 	text-align: center;
 	height: 275px;
 	background: url("https://i.mycdn.me/image?t=35&bid=837571923582&id=837571923582&plc=WEB&tkn=*jdIBIYSbpPPYFsXE-lwmHLoEW0A") 50% 30px no-repeat;
+	background-height: inherit;
 }
 .main {
 

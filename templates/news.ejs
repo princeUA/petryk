@@ -2,20 +2,20 @@
 <% block('barNews', 'active') -%>
 
 <div class="row main">
-    <div class="left col-md-9">
-        <div class="adm">
-            <% if(role == "admin") {%>
-                <form class="btn-group" role="form" action="/add" method="get">
+    <div class="left col-md-9">        
+        <% if(role == "admin") {%>
+            <div class="adm">
+                <form action="/add" method="get">
                     <button type="submit" class="btn btn-default btn-xs" title="Додати новину">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                 </form>
-            <% } %>
-        </div>
+             </div>    
+        <% } %>       
         <% for(var i = news.length - 1; news[i] != undefined; i--) { %>
-            <div class = "news">
-                <div class="adm">
-                    <% if(role == "admin") {%>
+            <div class = "news col-md-9">
+                if(role == "admin") {%>
+                    <div class="adm">
                         <form class="btn-group" role="form" action="/news/<%- news[i].id%>" method="post">
                             <button type="submit" class="btn btn-default btn-xs" formaction="/news/<%- news[i].id%>/edit" formmethod="get" title="Редагувати">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -24,8 +24,8 @@
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                         </form>
-                    <% } %>
-                </div>
+                    </div>
+                <% } %>                
                 <h3> <a href="/news/<%- news[i].id%>"> <%- news[i].title %> </a> </h3>
                 <p> <%-news[i].descrip%> </p>
             </div>

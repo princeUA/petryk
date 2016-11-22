@@ -26,16 +26,16 @@ exports.check = function(mail, password, callback) {
 
     db.connection.query('SELECT * FROM users WHERE mail = ?', [mail], function(err, user){
         if(err) {
-            callback(new AuthError(err));
+            callback(err);
         }
         if(user[0]) {
             if(passwordHash.verify(password, user[0].password)) {
                 callback(null, user);
             } else {
-                callback(new AuthError("Невірний пароль"));
+                callback("errPass");
             }
         } else {
-            callback(new AuthError("Невірна пошта"));
+            callback("errMail");
         }
     });
 };

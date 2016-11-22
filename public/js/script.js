@@ -7,3 +7,4 @@ $('#message').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('Нове повідомлення для ' + recipient)
   modal.find('.modal-body #recipient-name').val(recipient)
 })
+$(".errMail").addClass("visible");

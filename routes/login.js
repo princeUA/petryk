@@ -9,6 +9,9 @@ exports.login = function (req, res, next) {
 
         user.check(mail, password, function (err, user) {
             if (err) {
+                if(err == "errMail") {
+                    
+                }
                 return next(err);
             }
             req.session.user = user[0];

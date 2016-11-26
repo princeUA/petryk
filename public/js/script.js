@@ -6,5 +6,55 @@ $('#message').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text('Нове повідомлення для ' + recipient)
   modal.find('.modal-body #recipient-name').val(recipient)
-})
-$(".errMail").addClass("visible");
+});
+
+$(".logIn-btn").click(function(req, res, next) {
+  $('input[type="text"], input[type="password"]').removeAttr('style');
+   $('.noMail, .noPass').addClass('hidden');
+  var mail = $('#mail').val();
+  var password = $('#password').val();
+    if(mail == '') {
+        $('.noMail').removeClass('hidden');
+        $('input[type="text"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
+    }
+    else if(password == '') {
+        $('.noPass').removeClass('hidden');
+        $('input[type="password"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
+    } else {
+        $.ajax({
+            method: "POST",
+            url: "login",
+            data: {mail: mail, password: password},
+            success: function(result) {
+                if (result == "errLogin") {
+
+                    $('.errMail').removeClass('hidden');
+                    $('input[type="text"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
+
+                    $('.errPass').removeClass('hidden');
+                    $('input[type="password"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
+                } else {
+                    $('.logedOut').addClass('hidden');
+                    $('#user').html(result);
+                    $('.logedIn').removeClass('hidden');
+                    $('.adm').removeClass('hidden');
+                }
+            }
+        });
+
+    }
+});
+
+$(".logOut-btn").click(function(req, res, next) {
+    $.ajax({
+        method: "POST",
+        url: "login",
+        success: function(result) {
+            if (result == "logedOut") {
+                $('.logedIn').addClass('hidden');
+                $('.logedOut').removeClass('hidden');
+                $('.adm').addClass('hidden');
+            }
+        }
+    });
+});

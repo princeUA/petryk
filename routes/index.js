@@ -19,4 +19,6 @@ module.exports = function(app) {
   app.get('/add', require('./add').get);
   app.post('/add', require('./add').post);
   
+  app.post('/login', require('./login').post);
+  
 };

@@ -1,5 +1,5 @@
 {
-	"port": "process.env.PORT",
+	"port": 3000,
 	"session": {
 		"secret": "prince92",
 		"cookie": {

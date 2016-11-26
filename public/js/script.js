@@ -23,7 +23,7 @@ $(".logIn-btn").click(function(req, res, next) {
     } else {
         $.ajax({
             method: "POST",
-            url: "login",
+            url: "/login",
             data: {mail: mail, password: password},
             success: function(result) {
                 if (result == "errLogin") {

@@ -51,7 +51,7 @@
     </div>
     <div class="login logedIn <% if(!user) {%> hidden <% } %>">
         <form class="form-horizontal login-form" role="form" method="post">
-            <p>Ви увійшли як <% if(user && user != '<span id="user"></span>') { %><%= user %><% } else { %><span id="user"></span><% } %>.</p>
+            <p>Ви увійшли як <% if(user && user != '<span id="user"></span>') { console.log('<span id="user"></span>')%><%= user %><% } else { %><span id="user"></span><% } %>.</p>
             <div class="form-group form-group-sm">
                 <div class="col-sm-offset-3 col-sm-9">
                     <button type="button" class="btn btn-default logOut-btn">Вихід</button>

@@ -20,6 +20,7 @@ exports.post = function (req, res, next) {
                 }
             } else {
                 req.session.user = user[0];
+                var user = user[0].name;
                 res.end(user);
             }
         });

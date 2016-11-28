@@ -1,0 +1,10 @@
+node_modules/jquery/src/wrap.js
+.idea/vcs.xml
+*.iml
+.idea/libraries/petryk_node_modules.xml
+*.xml
+*.js
+*.txt
+node_modules/jquery/src/.eslintrc.json
+*.json
+node_modules/jquery/dist/jquery.slim.min.map

@@ -1,5 +1,6 @@
 var login = require('routes/login');
 var db = require('db');
+var HttpError = require('error').HttpError;
 
 
 exports.get = function (req, res, next) {

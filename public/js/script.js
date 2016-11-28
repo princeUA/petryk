@@ -9,15 +9,14 @@ $('#message').on('show.bs.modal', function (event) {
 });
 
 $(".logIn-btn").click(function(req, res, next) {
-  $('input[type="text"], input[type="password"]').removeAttr('style');
-   $('.noMail, .noPass').addClass('hidden');
-  var mail = $('#mail').val();
-  var password = $('#password').val();
+    $('input[type="text"], input[type="password"]').removeAttr('style');
+    $('.noMail, .noPass').addClass('hidden');
+    var mail = $('#mail').val();
+    var password = $('#password').val();
     if(mail == '') {
         $('.noMail').removeClass('hidden');
         $('input[type="text"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
-    }
-    else if(password == '') {
+    } else if(password == '') {
         $('.noPass').removeClass('hidden');
         $('input[type="password"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
     } else {
@@ -27,10 +26,8 @@ $(".logIn-btn").click(function(req, res, next) {
             data: {mail: mail, password: password},
             success: function(result) {
                 if (result == "errLogin") {
-
                     $('.errMail').removeClass('hidden');
                     $('input[type="text"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
-
                     $('.errPass').removeClass('hidden');
                     $('input[type="password"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
                 } else {

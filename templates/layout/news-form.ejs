@@ -1,18 +1,22 @@
-<button type="button" class="btn btn-default btn-xs" title="Жирний шрифт">
+<button type="button" class="btn btn-default btn-xs" onclick="document.execCommand('bold');" title="Жирний шрифт">
     <span class="glyphicon glyphicon-bold" aria-hidden="true"></span>
 </button>
+
 <form method="post">
     <div class="form-group">
+        <div id="text" class="form-control" contenteditable="true"></div>
+    </div>
+    <div class="form-group">
         <label for="title">Заголовок</label>
-        <textarea id="title" class="form-control newText" name="title" rows="1"><% if(news != undefined){%><%- news[0].title%><%}%></textarea>
+        <textarea id="title" contenteditable="true" class="form-control newText1" name="title" rows="1"><% if(news != undefined){%><%- news[0].title%><%}%></textarea>
     </div>
     <div class="form-group">
         <label for="desc">Короткий опис</label>
-        <textarea id="desc" class="form-control newText" name="descrip" rows="2"><% if(news != undefined){%><%- news[0].descrip%><%}%></textarea>
+        <textarea id="desc" class="form-control newText2" name="descrip" rows="2"><% if(news != undefined){%><%- news[0].descrip%><%}%></textarea>
     </div>
     <div class="form-group">
         <label for="new">Ваша новина</label>
-        <textarea id="new" class="form-control newText" name="news" rows="10"><% if(news != undefined){%><%- news[0].news%><%}%></textarea>
+        <textarea id="new" class="form-control newText3" name="news" rows="10"><% if(news != undefined){%><%- news[0].news%><%}%></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-default" name="send">Опублікувати</button>

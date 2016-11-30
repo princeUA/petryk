@@ -4,7 +4,7 @@ var db = require('db');
 
 exports.get = function (req, res, next) {
     db.connection.query('SELECT * FROM news WHERE id = ?', req.params.id, function(err, news){
-        if(err) next(new HttpError(err));
+        if(err) next(err);
         res.render('edit', {news: news});
     });
 

@@ -17,7 +17,7 @@ console.log(req.body);
             if (err) {
                 next(err);
             }
-            res.redirect('/news');
+            res.end("/news");
         });
     }
 };

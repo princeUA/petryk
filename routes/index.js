@@ -3,6 +3,9 @@ module.exports = function(app) {
   app.get('/', require('./main').get);
   app.post('/', require('./main').post);
 
+  app.get('/editmain', require('./editmain').get);
+  app.post('/editmain', require('./editmain').post);
+
   app.get('/news', require('./news').get);
   app.post('/news', require('./news').post);
 

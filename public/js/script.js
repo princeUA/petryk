@@ -60,15 +60,41 @@ $(document).ready(function() {
     $('.summernote').summernote({
             lang: 'uk-UA' // default: 'en-US'
     });
-    $('.send').click(function(){
+    $('.add').click(function(){
         var title = $('.summernote').eq(0).summernote('code');
         var descrip = $('.summernote').eq(1).summernote('code');
         var news = $('.summernote').eq(2).summernote('code');
         $.ajax({
-            method: "POST",
+            method:"POST",
             url: "add",
             data:{title: title, descrip: descrip, news: news, action: "addNew"}
+        })
+        .done(function(result){
+            $(location).attr("href",result);
         });
     });
-
+    $('.edit').click(function(){
+        var title = $('.summernote').eq(0).summernote('code');
+        var descrip = $('.summernote').eq(1).summernote('code');
+        var news = $('.summernote').eq(2).summernote('code');
+        $.ajax({
+            method:"POST",
+            url: "edit",
+            data:{title: title, descrip: descrip, news: news, action: "editNew"}
+        })
+            .done(function(result){
+                $(location).attr("href",result);
+            });
+    });
+    $('.editmain').click(function(){
+        var main = $('.summernote').eq(0).summernote('code');
+        $.ajax({
+            method:"POST",
+            url: "editmain",
+            data:{main:main, action: "editMain"}
+        })
+            .done(function(result){
+                $(location).attr("href",result);
+            });
+    });
 });

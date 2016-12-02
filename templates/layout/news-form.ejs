@@ -2,17 +2,14 @@
 <form>
     <div class="form-group">
         <label for="title">Заголовок</label>
-        <div id="title summernote" class="summernote form-control newText1"><% if(news != undefined){%><%- news[0].title%><%}%></div>
+        <div id="summernote title" class="summernote form-control newText1"><% if(news != undefined){%><%- news[0].title%><%}%></div>
     </div>
     <div class="form-group">
         <label for="desc">Короткий опис</label>
-        <div id="desc" class="summernote form-control newText2" ><% if(news != undefined){%><%- news[0].descrip%><%}%></div>
+        <div id="summernote desc" class="summernote form-control newText2" ><% if(news != undefined){%><%- news[0].descrip%><%}%></div>
     </div>
     <div class="form-group">
         <label for="new">Ваша новина</label>
-        <div id="new summernote" class="summernote form-control newText3" ><% if(news != undefined){%><%- news[0].news%><%}%></div>
-    </div>
-    <div class="form-group">
-        <button type="button" class="btn btn-default send" name="send">Опублікувати</button>
+        <div id="summernote new" class="summernote form-control newText3" ><% if(news != undefined){%><%- news[0].news%><%}%></div>
     </div>
 </form>

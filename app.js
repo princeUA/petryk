@@ -4,7 +4,6 @@ var path = require('path');
 var config = require('config');
 var log = require('libs/log')(module);
 var db = require('db.js');
-
 var HttpError = require('error').HttpError;
 
 
@@ -48,7 +47,7 @@ app.use(function (err, req, res, next) {
     if(err instanceof HttpError) {
         res.sendHttpError(err);
     } else {
-        if (app.get('env') == 'development') {
+        if (app.get('env') == 'develop') {
             var errorHandler = express.errorHandler();
             errorHandler(err, req, res, next);
         } else {
@@ -59,6 +58,6 @@ app.use(function (err, req, res, next) {
     }
 });
 
-http.createServer(app).listen(process.env.PORT != undefined ? process.env.PORT : 3000, function () {
-    log.info('Express server listening on port ' + process.env.PORT != undefined ? process.env.PORT : 3000);
+http.createServer(app).listen(3000, function () {
+    log.info('Express server listening on port ' + 3000);
 });

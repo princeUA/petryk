@@ -1,3 +1,4 @@
+var HttpError = require("error").HttpError;
 module.exports = function(app) {
 
   app.get('/', require('./main').get);
@@ -23,5 +24,8 @@ module.exports = function(app) {
   app.post('/add', require('./add').post);
   
   app.post('/login', require('./login').post);
-  
+
+  app.get('/:id', function(req, res, next){
+        next(new HttpError(404, "Такої сторінки не існує"));
+  });
 };

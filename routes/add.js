@@ -3,12 +3,17 @@ var db = require('db');
 
 
 exports.get = function (req, res, next) {
+    if(!req.role || req.role != "admin"){
+        next(403);
+    }
     var news;
     res.render('add',{news: news});
 };
 
 exports.post = function(req, res, next) {
-console.log(req.body);
+    if(req.user.role != "admin"){
+        next(403);
+    }
     if(req.body.login == '') {
         login.login(req, res, next);
     }

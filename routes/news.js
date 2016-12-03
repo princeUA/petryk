@@ -1,18 +1,16 @@
 var login = require('routes/login');
 var db = require('db');
-var HttpError = require('error').HttpError;
 
 
 exports.get = function (req, res, next) {
     db.connection.query('SELECT * FROM news', function(err, news) {
-        if(err) next(new HttpError(err));
+        if(err) next(err);
         res.render('news', {news: news});
     });
 
 };
 
 exports.post = function(req, res, next) {
-
     if(req.body.login == '') {
         login.login(req, res, next);
     }

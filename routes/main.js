@@ -6,8 +6,9 @@ exports.get = function (req, res, next) {
     db.connection.query('SELECT main FROM main WHERE id = 1', function(err, main){
         if(err) {
             next(err);
-        }
-        res.render('main', {main: main});
+        } else {
+            res.render('main', {main: main}); 
+        }        
     });    
 };
 

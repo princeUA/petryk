@@ -9,7 +9,7 @@ $(document).ready(function() {
         modal.find('.modal-body #recipient-name').val(recipient)
     });
 
-    $('.logIn-btn').click(function (req, res, next) {
+    $('.logIn-btn').click(function () {
         $('input[type="text"], input[type="password"]').removeAttr('style');
         $('.noMail, .noPass').addClass('hidden');
         var mail = $('#mail').val();
@@ -43,7 +43,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.logOut-btn').click(function (req, res, next) {
+    $('.logOut-btn').click(function () {
         $.ajax({
             method: "POST",
             url: "login",
@@ -69,8 +69,16 @@ $(document).ready(function() {
             url: "add",
             data:{title: title, descrip: descrip, news: news, action: "addNew"}
         })
-        .done(function(result){
-            $(location).attr("href",result);
+        .done(function(result, textStatus, jqXHR){
+            if(result == "done"){
+                window.location = "/";
+            }
+            else if(result == "err"){
+                $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+            }
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+            $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
         });
     });
     $('.edit').click(function(){
@@ -82,19 +90,37 @@ $(document).ready(function() {
             url: "edit",
             data:{title: title, descrip: descrip, news: news, action: "editNew"}
         })
-            .done(function(result){
-                $(location).attr("href",result);
-            });
+        .done(function(result, textStatus, jqXHR){
+             if(result == "done"){
+                 window.location = "/";
+             }
+             else if(result == "err"){
+                 $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+             }
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+            $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
+        });
     });
     $('.editmain').click(function(){
         var main = $('.summernote').eq(0).summernote('code');
         $.ajax({
             method:"POST",
             url: "editmain",
+            cache: false,
             data:{main:main, action: "editMain"}
         })
-            .done(function(result){
-                $(location).attr("href",result);
-            });
+        .done(function(result){
+            alert('1111');
+            if(result == "done"){
+                window.location = "/";
+            }
+            else if(result == "err"){
+                $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+            }
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+            $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
+        });
     });
 });

@@ -1,0 +1,12 @@
+<%layout('layout/page') -%>
+<%block('barUsers', 'active') -%>
+
+<div class="row main">
+    <%- users[0].name %>
+    <%- users[0].mail %>
+    <select class="form-control role">
+        <option><%- users[0].role %></option>
+        <option><%- (users[0].role == "user") ? "admin" : "user" %></option>
+    </select>
+
+</div>

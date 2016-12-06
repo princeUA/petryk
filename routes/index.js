@@ -22,6 +22,9 @@ module.exports = function(app) {
 
   app.get('/add', require('./add').get);
   app.post('/add', require('./add').post);
+
+  app.get('/users', require('./users').get);
+  app.post('/users', require('./users').post);
   
   app.post('/login', require('./login').post);
 

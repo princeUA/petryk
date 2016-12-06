@@ -111,7 +111,6 @@ $(document).ready(function() {
             data:{main:main, action: "editMain"}
         })
         .done(function(result){
-            alert('1111');
             if(result == "done"){
                 window.location = "/";
             }

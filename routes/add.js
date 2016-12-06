@@ -20,7 +20,8 @@ exports.post = function(req, res, next) {
         login.login(req, res, next);
     }
     else if(req.body.action =="addNew") {
-        db.connection.query('INSERT INTO news (title, descrip, news) VALUES(?, ?, ?)', [req.body.title, req.body.descrip, req.body.news], function(err) {
+        var time = new Date();
+        db.connection.query('INSERT INTO news (title, descrip, news, time) VALUES(?, ?, ?, ?)', [req.body.title, req.body.descrip, req.body.news, time], function(err) {
             if (err) {
                 next(err);
             } else {

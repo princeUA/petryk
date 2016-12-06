@@ -24,6 +24,9 @@
                         </form>
                     </div>
                     <h3> <a href="/news/<%- news[i].id%>"> <%- news[i].title %> </a> </h3>
+                    <div class="time">
+                        <p>Додано <%- news[0].time.slice(0,10) %> о <%- news[0].time.slice(12,16) %></p>
+                    </div>
                     <p> <%-news[i].descrip%> </p>
                 </div>
             <% } %>

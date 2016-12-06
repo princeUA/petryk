@@ -46,6 +46,9 @@
                                 <li><a href="#">Розклад занять</a></li>
                                 <li><a href="#">Фотогалерея</a></li>
                                 <li><a href="#">Контакти</a></li>
+                                <%if(role == "admin"){%>
+                                    <li class="<%=blocks.barUsers%>"><a href="users">Користувачі</a></li>
+                                <%}%>
                             </ul>
                             <div class="nav navbar-nav navbar-right">
                                 <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#message" data-whatever="artlenca@gmail.com">Написати нам</button>

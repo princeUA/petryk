@@ -1,12 +1,18 @@
-<%layout('layout/page') -%>
-<%block('barUsers', 'active') -%>
+<%layout("layout/page") -%>
+<%block("barUsers", "active") -%>
 
-<div class="row main">
-    <%- users[0].name %>
-    <%- users[0].mail %>
-    <select class="form-control role">
-        <option><%- users[0].role %></option>
-        <option><%- (users[0].role == "user") ? "admin" : "user" %></option>
-    </select>
-
+<div class="row main" xmlns="http://www.w3.org/1999/html">
+    <p><%- user[0].name %></p>
+    <p><%- user[0].mail %></p>
+    <!--Role changing -->
+    <form method="post" action="/users/<%- user[0].id %>">
+        <p>Статус:</p>
+        <div class="col-sm-1">
+            <select class="form-control" id="role" name="role">
+                <option value="<%- user[0].role %>"><%- user[0].role %></option>
+                <option value="<%- (user[0].role == "user") ? "admin" : "user" %>"><%- (user[0].role == "user") ? "admin" : "user" %></option>
+            </select>
+        </div>
+        <button class="btn btn-default" name="confRole">Підтвердити</button>
+    </form>
 </div>

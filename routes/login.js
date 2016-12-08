@@ -7,17 +7,15 @@ exports.post = function (req, res, next) {
         var password = req.body.password;
         user.check(mail, password, function (err, user) {
             if (err) {
-                if (err == "errMail") {
-                    res.end("errLogin");
-                } else if (err == "errPass") {
+                if (err == "errLogin" ) {
                     res.end("errLogin");
                 } else {
                     return next(err);
                 }
             } else {
                 req.session.user = user[0];
-                var user = user[0].name;
-                res.end(user);
+                var user = {login: user[0].login, image: user[0].image};
+                res.json(user);
             }
         });
     } else {

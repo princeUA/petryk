@@ -1,18 +1,22 @@
 <%layout("layout/page") -%>
 <%block("barUsers", "active") -%>
 
-<div class="row main" xmlns="http://www.w3.org/1999/html">
-    <p><%- user[0].name %></p>
-    <p><%- user[0].mail %></p>
+<div class="row main">
+    <p><%- user[0].login %></p>
+    <img class="img-responsive img-rounded userImg" src="<%- user[0].image%>">
+    <p>Ім'я: <%- user[0].name %></p>
+    <p>Пошта: <%- user[0].mail %></p>
     <!--Role changing -->
-    <form method="post" action="/users/<%- user[0].id %>">
-        <p>Статус:</p>
-        <div class="col-sm-1">
-            <select class="form-control" id="role" name="role">
+    <form class="form-inline" method="post" action="/users/<%- user[0].id %>">
+        <div class="form-group">
+            <label class="control-label" for="role">Статус:</label>
+            <select class="form-control input-sm" id="role" name="role">
                 <option value="<%- user[0].role %>"><%- user[0].role %></option>
                 <option value="<%- (user[0].role == "user") ? "admin" : "user" %>"><%- (user[0].role == "user") ? "admin" : "user" %></option>
             </select>
         </div>
-        <button class="btn btn-default" name="confRole">Підтвердити</button>
+        <div class="form-group">
+            <button class="btn btn-default" name="confRole">Підтвердити</button>
+        </div>
     </form>
 </div>

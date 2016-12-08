@@ -10,13 +10,13 @@ $(document).ready(function() {
     });
 
     $('.logIn-btn').click(function () {
-        $('input[type="text"], input[type="password"]').removeAttr('style');
+        $('input[type="email"], input[type="password"]').removeAttr('style');
         $('.noMail, .noPass').addClass('hidden');
         var mail = $('#mail').val();
         var password = $('#password').val();
         if (mail == '') {
             $('.noMail').removeClass('hidden');
-            $('input[type="text"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
+            $('input[type="email"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
         } else if (password == '') {
             $('.noPass').removeClass('hidden');
             $('input[type="password"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
@@ -28,12 +28,13 @@ $(document).ready(function() {
                 success: function (result) {
                     if (result == "errLogin") {
                         $('.errMail').removeClass('hidden');
-                        $('input[type="text"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
+                        $('input[type="mail"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
                         $('.errPass').removeClass('hidden');
                         $('input[type="password"]').css({"border": "2px solid red", "box-shadow": "0 0 3px red"});
                     } else {
                         $('.logedOut').addClass('hidden');
-                        $('#user').html(result);
+                        $('#user').html(result.login);
+                        $('#img').html('<img class="img-responsive img-rounded loginImg" src="'+ result.image + ' ">');
                         $('.logedIn').removeClass('hidden');
                         $('.adm').removeClass('hidden');
                     }

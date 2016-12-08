@@ -1,11 +1,12 @@
 <%layout('layout/page') -%>
 <%block('barUsers', 'active') -%>
 
-<div class="row main">
+<div class="row main table-responsive">
     <table class="table table-condensed table-hover table-striped">
         <thead>
             <tr>
                 <th>#</th>
+                <th>Логін</th>
                 <th>Ім'я</th>
                 <th>Пошта</th>
                 <th>Статус</th>
@@ -15,10 +16,11 @@
             <% for(var i = 0; users[i] != undefined; i++){ %>
 
                 <tr>
-                    <td><a href="users/<%-users[i].id%>"><%- i+1 %></a></td>
-                    <td><a href="users/<%-users[i].id%>"><%- users[i].name %></a></td>
-                    <td><a href="users/<%-users[i].id%>"><%- users[i].mail %></a></td>
-                    <td><a href="users/<%-users[i].id%>"><%- users[i].role %></a></td>
+                    <td><%- i+1 %></td>
+                    <td><a href="users/<%-users[i].id%>"><%- users[i].login %></a></td>
+                    <td><%- users[i].name %></td>
+                    <td><%- users[i].mail %></td>
+                    <td><%- users[i].role %></td>
                 </tr>
 
             <% } %>

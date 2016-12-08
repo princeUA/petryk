@@ -2,7 +2,7 @@ var passwordHash = require('password-hash');
 var db = require('db.js');
 var util = require('util');
 
-exports.reg = function(mail, name, password, callback) {
+exports.reg = function(mail, name, password, login, img, callback) {
     db.connection.query('SELECT * FROM users WHERE mail = ?', mail, function(err, result) {
         if(err) callback(new AuthError(err));
         else if(result[0]!== undefined) {
@@ -10,7 +10,7 @@ exports.reg = function(mail, name, password, callback) {
         }
         else {
             var hashedPass = passwordHash.generate(password);
-            db.connection.query('INSERT INTO users (mail, name, password) VALUES(?, ?, ?)', [mail, name, hashedPass], function(err) {
+            db.connection.query('INSERT INTO users (mail, name, password, login, image) VALUES(?, ?, ?, ?, ?)', [mail, name, hashedPass, login, img], function(err) {
                 if (err) {
                     callback(new AuthError(err));
                 }
@@ -32,10 +32,10 @@ exports.check = function(mail, password, callback) {
             if(passwordHash.verify(password, user[0].password)) {
                 callback(null, user);
             } else {
-                callback("errPass");
+                callback("errLogin");
             }
         } else {
-            callback("errMail");
+            callback("errLogin");
         }
     });
 };

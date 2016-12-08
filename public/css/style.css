@@ -50,6 +50,10 @@ li:hover {
 .time {
 	font-size: 12px;
 }
-.role {
-	width: 100px;
+.userImg {
+	width: 20%;
+}
+.loginImg {
+    width: 50%;
+    padding-bottom: 5px;
 }

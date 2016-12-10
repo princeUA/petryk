@@ -20,7 +20,7 @@ exports.post = function(req, res, next) {
         login.login(req, res, next);
     } else if(req.body.action == "editMain") {
         if(!req.role || req.role != "admin") {
-            res.end('err');
+            res.end('403');
            
         } else {
             db.connection.query('UPDATE main SET  main = ? WHERE id = 1', [req.body.main], function (err) {

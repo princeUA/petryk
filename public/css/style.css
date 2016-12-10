@@ -57,3 +57,6 @@ li:hover {
     width: 50%;
     padding-bottom: 5px;
 }
+.albums {
+	max-height: 400px;
+}

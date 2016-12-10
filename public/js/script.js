@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    //Modal form
     $('#message').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Кнопка, що викликає модаль
         var recipient = button.data('whatever') // Витягування інфи з атрибутів data-*
@@ -8,7 +9,7 @@ $(document).ready(function() {
         modal.find('.modal-title').text('Нове повідомлення для ' + recipient)
         modal.find('.modal-body #recipient-name').val(recipient)
     });
-
+    //Login
     $('.logIn-btn').click(function () {
         $('input[type="email"], input[type="password"]').removeAttr('style');
         $('.noMail, .noPass').addClass('hidden');
@@ -43,7 +44,7 @@ $(document).ready(function() {
 
         }
     });
-
+    //Logout
     $('.logOut-btn').click(function () {
         $.ajax({
             method: "POST",
@@ -61,6 +62,7 @@ $(document).ready(function() {
     $('.summernote').summernote({
             lang: 'uk-UA' // default: 'en-US'
     });
+    // Add new
     $('.add').click(function(){
         var title = $('.summernote').eq(0).summernote('code');
         var descrip = $('.summernote').eq(1).summernote('code');
@@ -70,11 +72,11 @@ $(document).ready(function() {
             url: "add",
             data:{title: title, descrip: descrip, news: news, action: "addNew"}
         })
-        .done(function(result, textStatus, jqXHR){
+        .done(function(result){
             if(result == "done"){
-                window.location = "/";
+                window.location = "/news";
             }
-            else if(result == "err"){
+            else if(result == "403"){
                 $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
             }
         })
@@ -82,6 +84,7 @@ $(document).ready(function() {
             $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
         });
     });
+    //Edit new
     $('.edit').click(function(){
         var title = $('.summernote').eq(0).summernote('code');
         var descrip = $('.summernote').eq(1).summernote('code');
@@ -91,11 +94,11 @@ $(document).ready(function() {
             url: "edit",
             data:{title: title, descrip: descrip, news: news, action: "editNew"}
         })
-        .done(function(result, textStatus, jqXHR){
+        .done(function(result){
              if(result == "done"){
-                 window.location = "/";
+                 window.location = "/news";
              }
-             else if(result == "err"){
+             else if(result == "403"){
                  $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
              }
         })
@@ -103,6 +106,7 @@ $(document).ready(function() {
             $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
         });
     });
+    //Edit main page
     $('.editmain').click(function(){
         var main = $('.summernote').eq(0).summernote('code');
         $.ajax({
@@ -115,12 +119,34 @@ $(document).ready(function() {
             if(result == "done"){
                 window.location = "/";
             }
-            else if(result == "err"){
+            else if(result == "403"){
                 $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
             }
         })
         .fail(function(jqXHR, textStatus, errorThrown){
             $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
         });
+    });
+    //Add new album
+    $('.addAlbum').click(function(){
+        var title = $('.summernote').eq(0).summernote('code');
+        var photo = $('.summernote').eq(1).summernote('code');
+        $.ajax({
+            method:"POST",
+            url: "addalbum",
+            cache: false,
+            data:{title:title, photo:photo, action: "addAlbum"}
+        })
+            .done(function(result){
+                if(result == "done"){
+                    window.location = "/photos";
+                }
+                else if(result == "403"){
+                    $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown){
+                $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
+            });
     });
 });

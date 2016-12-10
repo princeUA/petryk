@@ -1,0 +1,10 @@
+<form>
+    <div class="form-group">
+        <p>Підпис</p>
+        <div id="summernote" class="summernote form-control"><% if(albums != undefined){%><%- albums[0].title%><%}%></div>
+    </div>
+    <div class="form-group">
+        <p>Фото</p>
+        <div id="summernote" class="summernote form-control" ><% if(albums != undefined){%><%- albums[0].photo%><%}%></div>
+    </div>
+</form>

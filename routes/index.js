@@ -28,6 +28,15 @@ module.exports = function(app) {
 
   app.get('/users/:id', require('./user').get);
   app.post('/users/:id', require('./user').post);
+
+  app.get('/photos', require('./photos').get);
+  app.post('/photos', require('./photos').post);
+
+  app.get('/photos/:id', require('./photos').get);
+  app.post('/photos/:id', require('./photos').post);
+
+  app.get('/addalbum', require('./addalbum').get);
+  app.post('/addalbum', require('./addalbum').post);
   
   app.post('/login', require('./login').post);
 

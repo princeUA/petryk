@@ -49,8 +49,8 @@
             </div>
         </form>
     </div>
-    <div class="login logedIn <% if(!user) {%> hidden <% } %>">
-        <form class="form-horizontal login-form" role="form" method="post">
+    <div class="logedIn <% if(!user) {%> hidden <% } %>">
+        <form class="form-horizontal" role="form" method="post">
             <p>Ви увійшли як <span class="logedOut"><%= user %></span><span id="user"></span>.</p>
             <span class="logedOut">
                 <img class="img-responsive img-rounded loginImg logedOut" src="<%- image %>">

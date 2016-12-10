@@ -22,6 +22,10 @@ img {
 .main {
 	
 }
+.logedIn {
+	float: right;
+	border: solid red;
+}
 .left {
 	padding-bottom: 20px;
 }

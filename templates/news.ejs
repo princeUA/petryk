@@ -1,6 +1,5 @@
 <% layout('layout/page') -%>
 <% block('barNews', 'active') -%>
-
 <div class="row main">
         <div class="row left col-md-9">
             <div class="adm row  <% if(role != "admin") {%> hidden <% } %>">
@@ -10,7 +9,6 @@
                     </button>
                 </form>
             </div>
-
             <% for(var i = news.length - 1; news[i] != undefined; i--) { %>
                 <div class = "news">
                     <div class="adm <% if(role != "admin") {%> hidden <% } %>">
@@ -31,6 +29,5 @@
                 </div>
             <% } %>
         </div>
-
     <% include layout/login %>
 </div>

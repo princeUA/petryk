@@ -3,7 +3,6 @@ body {
 	padding-right: 5%;
  	padding-bottom: 20px;
 }
-
 img {
 	max-width: 100%;
 }
@@ -20,17 +19,15 @@ img {
 	margin-top: 5%;
 }
 .main {
-	
 }
-.logedIn {
-	float: right;
-	border: solid red;
-}
+
 .left {
 	padding-bottom: 20px;
+
 }
 .news {
-	margin-bottom: 10px;
+    margin-top: 5px;
+	margin-bottom: 5px;
 	padding: 10px;
 	padding-bottom: 2px;
 	background-color: #F2F2F2;
@@ -40,7 +37,10 @@ img {
 	float: right;
 }
 .right {
-	padding-top: 10px;
+	padding-top: 20px;
+}
+.logedIn {
+    margin-left: auto;
 }
 button {
 	padding-top: 10px;
@@ -50,7 +50,6 @@ li:hover {
 	background-color: #A9E2F3;
 	border-radius: 2px;
 }
-
 .time {
 	font-size: 12px;
 }
@@ -62,5 +61,12 @@ li:hover {
     padding-bottom: 5px;
 }
 .albums {
-	max-height: 400px;
+    width: auto;
+	padding: 10px;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+}
+.photoRow {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }

@@ -1,8 +1,6 @@
 
-<div class="right col-md-3">
-
-    <div class="login logedOut <% if(user) {%> hidden <% } %>">
-
+<div class="right col-md-3 ">
+    <div class="row login logedOut <% if(user) {%> hidden <% } %>">
         <form class="form-horizontal" role="form">
             <div class="form-group form-group-sm">
                 <label for="mail" class="col-sm-3 control-label">E-mail</label>
@@ -49,24 +47,15 @@
             </div>
         </form>
     </div>
-    <div class="logedIn <% if(!user) {%> hidden <% } %>">
-        <form class="form-horizontal" role="form" method="post">
-            <p>Ви увійшли як <span class="logedOut"><%= user %></span><span id="user"></span>.</p>
-            <span class="logedOut">
-                <img class="img-responsive img-rounded loginImg logedOut" src="<%- image %>">
-            </span>
-            <span id="img"></span>
-            <div class="form-group form-group-sm">
-                <div class="col-sm-offset-3 col-sm-9">
-                    <button type="button" class="btn btn-default logOut-btn">Вихід</button>
-                </div>
-            </div>
-        </form>
+    <div class="row logedIn <% if(!user) {%> hidden <% } %>">
+        <p>Ви увійшли як <span class="logedOut"><%= user %></span><span id="user"></span>.</p>
+        <span class="logedOut">
+            <img class="img-responsive img-rounded loginImg logedOut" src="<%- image %>">
+        </span>
+        <span id="img"></span>
+        <div class="form-group form-group-sm">
+            <button type="button" class="btn btn-default logOut-btn">Вихід</button>
+        </div>
     </div>
-
-</div>
-
-<div class="right col-md-3">
-
 </div>
 

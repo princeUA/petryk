@@ -1,5 +1,6 @@
-<% layout('layout/page') -%>
-<% block('barNews', 'active') -%>
+<% layout('layout/page');
+    block('barNews', 'active');
+    block("title" , "Новини") %>
 <div class="row main">
         <div class="row left col-md-9">
             <div class="adm row  <% if(role != "admin") {%> hidden <% } %>">

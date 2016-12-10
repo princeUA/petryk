@@ -32,8 +32,8 @@ module.exports = function(app) {
   app.get('/photos', require('./photos').get);
   app.post('/photos', require('./photos').post);
 
-  app.get('/photos/:id', require('./photos').get);
-  app.post('/photos/:id', require('./photos').post);
+  app.get('/photos/:id', require('./photo').get);
+  app.post('/photos/:id', require('./photo').post);
 
   app.get('/addalbum', require('./addalbum').get);
   app.post('/addalbum', require('./addalbum').post);

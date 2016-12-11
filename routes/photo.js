@@ -4,7 +4,7 @@ var HttpError = require('error').HttpError;
 
 
 exports.get = function (req, res, next) {
-    db.connection.query('SELECT * FROM photos WHERE id = ?', req.params.id, function(err, photos) {
+    db.connection.query('SELECT * FROM albums WHERE id = ?', req.params.id, function(err, photos) {
         if(err) {
             next(err);
         } else {

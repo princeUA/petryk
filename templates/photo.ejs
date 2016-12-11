@@ -4,22 +4,23 @@ block("title" , "Фотогалерея") %>
 
 <div class="row main">
     <div class="left col-md-9">
-        <%for(var i = photos.length - 1; photos[i] != undefined; i--) {%>
-        <div class="row photoRow">
-            <div class="col-md-7 albums">
-                <a href="/photos/<%- photos[i].id%>">
-                    <%- photos[i].photo %>
-                </a>
+        <div class="row">
+            <div class="adm <% if(role != "admin") {%> hidden <% } %>">
+                <form class="btn-group" role="form" action="/albums/<%- photos[0].id%>" method="post">
+                    <button type="button" class="btn btn-default btn-xs editPhotos" formaction="/albums/<%- photos[0].id%>/edit" formmethod="get" title="Редагувати">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button type="submit" class="btn btn-default btn-xs" name="del" title="Видалити">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </form>
             </div>
         </div>
-        <%}%>
-        <div class="col-md-7 addPhoto">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <div class="row photoRow">
+            <span class="photos"><%-photos[0].photos%></span>
+            <span class="editPhotos hidden"><div id="summernote" class="summernote form-control"><%-photos[0].photos%></span>
         </div>
     </div>
-
-
-
+    <% include layout/login %>
 </div>
-<% include layout/login %>
-</div>
+

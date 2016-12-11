@@ -149,4 +149,8 @@ $(document).ready(function() {
                 $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
             });
     });
+    $(".editPhotos").click(function(){
+        $(".photos").addClass("hidden");
+        $(".editPhotos").addClass("show");
+    })
 });

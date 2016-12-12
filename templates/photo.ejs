@@ -3,11 +3,11 @@ block('barPhotos', 'active');
 block("title" , "Фотогалерея") %>
 
 <div class="row main">
-    <div class="left col-md-9">
+    <div class="col-md-9 left">
         <div class="row">
             <div class="adm <% if(role != "admin") {%> hidden <% } %>">
                 <form class="btn-group" role="form" action="/albums/<%- photos[0].id%>" method="post">
-                    <button type="button" class="btn btn-default btn-xs editPhotos" formaction="/albums/<%- photos[0].id%>/edit" formmethod="get" title="Редагувати">
+                    <button type="button" class="btn btn-default btn-xs editPhotos-btn" title="Редагувати">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </button>
                     <button type="submit" class="btn btn-default btn-xs" name="del" title="Видалити">
@@ -17,8 +17,11 @@ block("title" , "Фотогалерея") %>
             </div>
         </div>
         <div class="row photoRow">
-            <span class="photos"><%-photos[0].photos%></span>
-            <span class="editPhotos hidden"><div id="summernote" class="summernote form-control"><%-photos[0].photos%></span>
+            <div class="photos"><%-photos[0].photos%></div>
+            <div class="editPhotos">
+                <div id="summernote" class="summernote form-control"><%-photos[0].photos%></div>
+                <button type="button" class="btn btn-default conf-btn">Підтвердити</button>
+            </div>
         </div>
     </div>
     <% include layout/login %>

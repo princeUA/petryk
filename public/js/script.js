@@ -10,7 +10,7 @@ $(document).ready(function() {
         modal.find('.modal-body #recipient-name').val(recipient)
     });
     //Login
-    $('.logIn-btn').click(function () {
+    $('.logIn-btn').submit(function () {
         $('input[type="email"], input[type="password"]').removeAttr('style');
         $('.noMail, .noPass').addClass('hidden');
         var mail = $('#mail').val();
@@ -149,8 +149,23 @@ $(document).ready(function() {
                 $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
             });
     });
-    $(".editPhotos").click(function(){
+    $(".editPhotos-btn").click(function(){
         $(".photos").addClass("hidden");
         $(".editPhotos").addClass("show");
-    })
+    });
+    $(".conf-btn").click(function(){
+        var photos = $('.summernote').summernote('code');
+        $.post("photo", {photos: photos, action: "editPhotos", id: 24})
+            .done(function(result){
+                if(result == "403"){
+                    $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+                } else if(result == "done") {
+                    $(".editPhotos").addClass("hidden");
+                    $(".photoRow").html("<div>photos</div>")
+                }             
+            })
+            .fail(function(jqXHR, textStatus, errorThrown){
+                $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
+            });
+    });
 });

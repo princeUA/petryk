@@ -1,6 +1,6 @@
 <div class="col-md-3 right">
     <div class="row login logedOut <% if(user) {%> hidden <% } %>">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal logIn" action="" role="form" method="post">
             <div class="form-group form-group-sm">
                 <label for="mail" class="col-sm-3 control-label">E-mail</label>
                 <div class="col-sm-9">
@@ -41,7 +41,7 @@
 
             <div class="form-group form-group-sm">
                 <div class="col-sm-offset-3 col-sm-9">
-                    <button type="button" class="btn btn-default logIn-btn">Вхід</button>
+                    <button type="submit" class="btn btn-default">Вхід</button>
                 </div>
             </div>
         </form>

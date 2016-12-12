@@ -10,7 +10,7 @@ $(document).ready(function() {
         modal.find('.modal-body #recipient-name').val(recipient)
     });
     //Login
-    $('.logIn-btn').submit(function () {
+    $('.logIn').submit(function () {
         $('input[type="email"], input[type="password"]').removeAttr('style');
         $('.noMail, .noPass').addClass('hidden');
         var mail = $('#mail').val();

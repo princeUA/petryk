@@ -33,6 +33,10 @@ img {
 	background-color: #F2F2F2;
 	border-radius: 5px;
 }
+.news:hover {
+	border: solid lightskyblue 1px;
+	box-shadow: 0 0 10px lightskyblue;
+}
 .adm {
 	float: right;
 }
@@ -61,11 +65,16 @@ li:hover {
     padding-bottom: 5px;
 }
 .albums {
+	height: 250px;
     width: auto;
 	padding: 10px;
     background-color: #F2F2F2;
     border-radius: 5px;
 	text-align: center;
+}
+.albums:hover{
+	border: solid lightskyblue 1px;
+	box-shadow: 0 0 10px lightskyblue;
 }
 .photoRow {
     margin-top: 5px;

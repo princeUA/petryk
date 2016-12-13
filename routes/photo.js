@@ -21,9 +21,9 @@ exports.post = function(req, res, next) {
         if(!req.role || req.role != "admin"){
             res.end("403");
         }
-        db.connection.query("UPDATE albums SET photos = ? WHERE id = ?", [req.body.photos, req.body.id], function(err, photos){
+        db.connection.query("UPDATE albums SET photos = ? WHERE id = ?", [req.body.photos, req.params.id], function(err, photos){
             console.log(req.body.photos);
-            console.log(req.body.id);
+            console.log(req.params.id);
             console.log(photos);
             if(err){
                 next(new HttpError(err));

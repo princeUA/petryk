@@ -16,12 +16,21 @@ block("title" , "Фотогалерея") %>
                 </form>
             </div>
         </div>
-        <div class="row photoRow">
-            <div class="photos"><%-photos[0].photos%></div>
-            <div class="editPhotos">
-                <div id="summernote" class="summernote form-control"><%-photos[0].photos%></div>
-                <button type="button" class="btn btn-default conf-btn">Підтвердити</button>
+        <div class="row photoRow news">
+            <div class="photos">
+                <%-photos[0].photos%>
             </div>
+            <form>
+                <div class="editPhotos form-group hidden">
+                    <h3>Редагувати альбом</h3>
+                    <div class="summernote form-control">
+                        <%-photos[0].photos%>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default conf-btn">Підтвердити</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <% include layout/login %>

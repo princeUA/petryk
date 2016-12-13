@@ -1,14 +1,14 @@
 <form>
     <div class="form-group">
         <p>Заголовок</p>
-        <div id="summernote" class="summernote form-control"><% if(news != undefined){%><%- news[0].title%><%}%></div>
+        <div class="summernote"><% if(news != undefined){%><%- news[0].title%><%}%></div>
     </div>
     <div class="form-group">
         <p>Короткий опис</p>
-        <div id="summernote" class="summernote form-control" ><% if(news != undefined){%><%- news[0].descrip%><%}%></div>
+        <div class="summernote" ><% if(news != undefined){%><%- news[0].descrip%><%}%></div>
     </div>
     <div class="form-group">
         <p>Ваша новина</p>
-        <div id="summernote" class="summernote form-control" ><% if(news != undefined){%><%- news[0].news%><%}%></div>
+        <div class="summernote" ><% if(news != undefined){%><%- news[0].news%><%}%></div>
     </div>
 </form>

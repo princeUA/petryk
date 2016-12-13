@@ -1,6 +1,6 @@
 <div class="col-md-3 right">
     <div class="row login logedOut <% if(user) {%> hidden <% } %>">
-        <form class="form-horizontal logIn" action="" role="form" method="post">
+        <form class="form-horizontal logIn" role="form" onsubmit="event.preventDefault()">
             <div class="form-group form-group-sm">
                 <label for="mail" class="col-sm-3 control-label">E-mail</label>
                 <div class="col-sm-9">

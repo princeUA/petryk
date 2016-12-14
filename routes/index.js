@@ -23,11 +23,8 @@ module.exports = function(app) {
   app.get('/add', require('./add').get);
   app.post('/add', require('./add').post);
 
-  app.get('/users', require('./users').get);
-  app.post('/users', require('./users').post);
-
-  app.get('/users/:id', require('./user').get);
-  app.post('/users/:id', require('./user').post);
+  app.get('/contacts', require('./contacts').get);
+  app.post('/contacts', require('./contacts').post);
 
   app.get('/photos', require('./photos').get);
   app.post('/photos', require('./photos').post);
@@ -37,7 +34,13 @@ module.exports = function(app) {
 
   app.get('/addalbum', require('./addalbum').get);
   app.post('/addalbum', require('./addalbum').post);
-  
+
+  app.get('/users', require('./users').get);
+  app.post('/users', require('./users').post);
+
+  app.get('/users/:id', require('./user').get);
+  app.post('/users/:id', require('./user').post);
+
   app.post('/login', require('./login').post);
 
   app.get('/:id', function(req, res, next){

@@ -170,4 +170,24 @@ $(document).ready(function() {
                 $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
             });
     });
+    //Editing contacts
+    $(".editContacts-btn").click(function(){
+        $(".contacts").removeClass("show").addClass("hidden");
+        $(".editContacts").removeClass("hidden").addClass("show");
+    });
+    $(".contacts-btn").click(function(){
+        var contacts = $('.summernote').summernote('code');
+        $.post("#", {contacts: contacts, action: "editContacts"})
+            .done(function(result){
+                if(result == "403"){
+                    $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+                } else if(result == "done") {
+                    $(".editPhotos").removeClass("show").addClass("hidden");
+                    $(".photos").removeClass("hidden").addClass("show").html("<div>" + contacts + "</div>");
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown){
+                $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
+            });
+    });
 });

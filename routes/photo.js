@@ -22,9 +22,6 @@ exports.post = function(req, res, next) {
             res.end("403");
         } else {
             db.connection.query("UPDATE albums SET photos = ? WHERE id = ?", [req.body.photos, req.params.id], function(err, photos){
-                console.log(req.body.photos);
-                console.log(req.params.id);
-                console.log(photos);
                 if(err){
                     next(new HttpError(err));
                 } else {

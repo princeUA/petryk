@@ -182,8 +182,8 @@ $(document).ready(function() {
                 if(result == "403"){
                     $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
                 } else if(result == "done") {
-                    $(".editPhotos").removeClass("show").addClass("hidden");
-                    $(".photos").removeClass("hidden").addClass("show").html("<div>" + contacts + "</div>");
+                    $(".editContacts").removeClass("show").addClass("hidden");
+                    $(".contacts").removeClass("hidden").addClass("show").html("<div>" + contacts + "</div>");
                 }
             })
             .fail(function(jqXHR, textStatus, errorThrown){

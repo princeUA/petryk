@@ -8,7 +8,6 @@ exports.get = function (req, res, next) {
         if(err) {
             next(err);
         } else {
-            console.log(contacts[0]);
             res.render('contacts', {contacts: contacts});
         }
     });
@@ -22,7 +21,7 @@ exports.post = function(req, res, next) {
         if(!req.role || req.role != "admin"){
             res.end("403");
         } else {
-            db.connection.query("UPDATE contacts SET contacts = ? WHERE id = 1", [req.body.contacts], function(err, contacts){
+            db.connection.query("UPDATE contacts SET contacts = ? WHERE id = 1", [req.body.contacts], function(err, result){
                 if(err){
                     next(new HttpError(err));
                 } else {

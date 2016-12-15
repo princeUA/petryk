@@ -29,7 +29,17 @@ block("title" , "Контакти") %>
                 </div>
             </form>
         </div>
+        <div id="gmap" style="with:300px;height:250px;"></div>
+        <script type="text/javascript">
+            $(function() {
+                new Maplace({
+                    locations: [{0}, {0}],
+                controls_on_map: false
+            }).Load();
+            });
+        </script>
     </div>
     <% include layout/login %>
 </div>
+
 

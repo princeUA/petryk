@@ -1,7 +1,7 @@
 <% layout('layout/page');
 block('barContacts', 'active');
 block("title" , "Контакти");
-block('JS1', 'src="http://maps.google.com/maps/api/js"');
+block('JS1', 'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZpqEvuDsbdxFwcWw6C8ZMsbAoxZclGLk&callback=initMap" async defer');
 block("JS2" , 'src="/js/gmaps.min.js"');%>
 
 <div class="row main">

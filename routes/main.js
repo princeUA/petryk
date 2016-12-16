@@ -8,7 +8,8 @@ exports.get = function (req, res, next) {
             next(err);
         } else {
             res.render('main', {main: main}); 
-        }        
+        }
+        db.connection.release();
     });    
 };
 

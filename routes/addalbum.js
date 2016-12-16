@@ -26,6 +26,7 @@ exports.post = function(req, res, next) {
                 } else {
                     res.end("done");
                 }
+                db.connection.release();
             });
         }
     }

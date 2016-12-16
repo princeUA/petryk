@@ -4,11 +4,18 @@ var HttpError = require('error').HttpError;
 
 
 exports.get = function (req, res, next) {
-    db.connection.query('SELECT * FROM schedule WHERE id = 1', function(err, schedule) {
+    db.pool.getConnection(function(err, connection) {
         if(err) {
             next(err);
         } else {
-            res.render('schedule', {schedule: schedule});
+            connection.query('SELECT * FROM schedule WHERE id = 1', function (err, schedule) {
+                connection.release();
+                if (err) {
+                    next(err);
+                } else {
+                    res.render('schedule', {schedule: schedule});
+                }
+            });
         }
     });
 };
@@ -27,6 +34,7 @@ exports.post = function(req, res, next) {
                 } else {
                     res.end("done");
                 }
+                db.connection.release();
             });
         }
     }

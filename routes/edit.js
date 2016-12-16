@@ -11,7 +11,8 @@ exports.get = function (req, res, next) {
                 next(err);
             } else {
                 res.render('edit', {news: news});
-            }            
+            }
+            db.connection.release();
         });
     }
 };
@@ -29,7 +30,8 @@ exports.post = function(req, res, next) {
                     next(err);
                 } else {
                     res.end('done'); 
-                }                
+                }
+                db.connection.release();
             });
         }
     }

@@ -9,6 +9,7 @@ exports.get = function (req, res, next) {
         } else {
             res.render("user", {user: user});
         }
+        db.connection.release();
     });
 };
 
@@ -24,6 +25,7 @@ exports.post = function(req, res, next) {
             } else {
                 res.redirect("#");
             }
+            db.connection.release();
         })
     }
 };

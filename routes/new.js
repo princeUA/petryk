@@ -9,7 +9,8 @@ exports.get = function (req, res, next) {
             next(err);
         } else {
             res.render('new', {news: news});
-        }        
+        }
+        db.connection.release();
     });
 
 };
@@ -24,7 +25,8 @@ exports.post = function(req, res, next) {
                 next(new HttpError(err)); 
             } else {
                 res.redirect('/news');
-            }             
+            }
+            db.connection.release();
         });
     }
 

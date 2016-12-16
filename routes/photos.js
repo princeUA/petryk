@@ -9,6 +9,7 @@ exports.get = function (req, res, next) {
         } else {
             res.render('photos', {albums: albums});
         }
+        db.connection.release();
     });
 
 };

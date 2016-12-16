@@ -15,5 +15,5 @@ var pool  = mysql.createPool(options);
 //var connection = mysql.createConnection(options);
 
 var mySession = new MySQLStore(options);
-exports.connection = pool;
+exports.pool = pool;
 exports.mySession = mySession;

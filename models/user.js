@@ -15,6 +15,7 @@ exports.reg = function(mail, name, password, login, img, callback) {
                     callback(new AuthError(err));
                 }
                 callback(null);
+                connection.release();
             });
         }
     });
@@ -37,6 +38,7 @@ exports.check = function(mail, password, callback) {
         } else {
             callback("errLogin");
         }
+        connection.release();
     });
 };
 

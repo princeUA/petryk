@@ -52,11 +52,6 @@ li:hover {
 .time {
 	font-size: 12px;
 }
-li .active {
-     color: blue;
-     background-color: blue !important;
-     border-radius: 2px;
- }
 .userImg {
 	width: 150px;
 }

@@ -8,7 +8,8 @@ exports.get = function (req, res, next) {
             next(err);
         } else {
             res.render('news', {news: news});  
-        }        
+        }
+        db.connection.release();
     });
 
 };

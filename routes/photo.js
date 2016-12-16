@@ -27,6 +27,7 @@ exports.post = function(req, res, next) {
                 } else {
                     res.end("done");
                 }
+                db.connection.release();
             });
         }        
     }
@@ -40,6 +41,7 @@ exports.post = function(req, res, next) {
                 } else {
                     res.redirect('/photos');
                 }
+                db.connection.release();
             });
         }
         

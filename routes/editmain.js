@@ -12,6 +12,7 @@ exports.get = function (req, res, next) {
             } else {
                 res.render('editmain', {main: main[0].main});
             }
+            db.connection.release();
         });
     }
 };
@@ -29,6 +30,7 @@ exports.post = function(req, res, next) {
                 } else {
                     res.send('done');
                 }
+                db.connection.release();
             });
         }
     }

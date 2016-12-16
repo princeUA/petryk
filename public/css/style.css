@@ -46,12 +46,17 @@ button {
 	vertical-align: middle;
 }
 li:hover {
-	background-color: #A9E2F3;
+	background-color: lightskyblue;
 	border-radius: 2px;
 }
 .time {
 	font-size: 12px;
 }
+li .active {
+     color: blue;
+     background-color: blue !important;
+     border-radius: 2px;
+ }
 .userImg {
 	width: 150px;
 }

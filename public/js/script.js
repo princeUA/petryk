@@ -190,4 +190,24 @@ $(document).ready(function() {
                 $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
             });
     });
+    //Editing schedule
+    $(".editSchedule-btn").click(function(){
+        $(".contacts").removeClass("show").addClass("hidden");
+        $(".editContacts").removeClass("hidden").addClass("show");
+    });
+    $(".schedule-btn").click(function(){
+        var schedule = $('.summernote').summernote('code');
+        $.post("#", {schedule: schedule, action: "editSchedule"})
+            .done(function(result){
+                if(result == "403"){
+                    $('.main').html('Вибачте, сталася помилка<br>403<br>Доступ заборонено');
+                } else if(result == "done") {
+                    $(".editContacts").removeClass("show").addClass("hidden");
+                    $(".contacts").removeClass("hidden").addClass("show").html("<div>" + schedule + "</div>");
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown){
+                $('.main').html('Вибачте, сталася помилка<br>' + textStatus + '<br>' + errorThrown);
+            });
+    });
 });

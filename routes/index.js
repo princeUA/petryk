@@ -26,6 +26,9 @@ module.exports = function(app) {
   app.get('/contacts', require('./contacts').get);
   app.post('/contacts', require('./contacts').post);
 
+  app.get('/schedule', require('./schedule').get);
+  app.post('/schedule', require('./schedule').post);
+
   app.get('/photos', require('./photos').get);
   app.post('/photos', require('./photos').post);
 

@@ -32,6 +32,8 @@ img {
 .albums {
 	text-align: center;
 	height: 250px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 .adm {
 	float: right;
@@ -62,8 +64,7 @@ li:hover {
 }
 
 .photoRow {
-    margin-top: 5px;
-    margin-bottom: 10px;
+
 }
 .addPhoto{
 	border: solid 1px lightskyblue;

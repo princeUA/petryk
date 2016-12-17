@@ -28,14 +28,20 @@ exports.post = function(req, res, next) {
         if(!req.role || req.role != "admin"){
             res.end("403");
         } else {
-            db.connection.query("UPDATE schedule SET schedule = ? WHERE id = 1", [req.body.schedule], function(err, result){
-                if(err){
-                    next(new HttpError(err));
+            db.pool.getConnection(function(err, connection) {
+                if(err) {
+                    next(err);
                 } else {
-                    res.end("done");
+                    connection.query("UPDATE schedule SET schedule = ? WHERE id = 1", [req.body.schedule], function(err, result){
+                        if(err){
+                            next(new HttpError(err));
+                        } else {
+                            res.end("done");
+                        }
+                        db.connection.release();
+                    });
                 }
-                db.connection.release();
-            });
+            });            
         }
     }
 };

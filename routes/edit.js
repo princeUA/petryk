@@ -6,13 +6,19 @@ exports.get = function (req, res, next) {
     if(!req.role || req.role != "admin"){
         next(new HttpError(403, "Доступ заборонено"));
     } else {
-        db.connection.query('SELECT * FROM news WHERE id = ?', req.params.id, function (err, news) {
-            if (err) {
+        db.pool.getConnection(function(err, connection) {
+            if(err) {
                 next(err);
             } else {
-                res.render('edit', {news: news});
+                connection.query('SELECT * FROM news WHERE id = ?', req.params.id, function (err, news) {
+                    if (err) {
+                        next(err);
+                    } else {
+                        res.render('edit', {news: news});
+                    }
+                    connection.release();
+                });
             }
-            db.connection.release();
         });
     }
 };
@@ -25,13 +31,19 @@ exports.post = function(req, res, next) {
         if (!req.role || req.role != "admin") {
             res.end('403');
         } else {
-            db.connection.query('UPDATE news SET title = ?, descrip = ?, news = ? WHERE id = ?', [req.body.title, req.body.descrip, req.body.news, req.params.id], function (err) {
-                if (err) {
+            db.pool.getConnection(function(err, connection) {
+                if(err) {
                     next(err);
                 } else {
-                    res.end('done'); 
+                    connection.query('UPDATE news SET title = ?, descrip = ?, news = ? WHERE id = ?', [req.body.title, req.body.descrip, req.body.news, req.params.id], function (err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            res.end('done');
+                        }
+                        connection.release();
+                    });
                 }
-                db.connection.release();
             });
         }
     }

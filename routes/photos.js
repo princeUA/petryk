@@ -3,13 +3,19 @@ var db = require('db');
 
 
 exports.get = function (req, res, next) {
-    db.connection.query('SELECT * FROM albums', function(err, albums) {
-        if(err){
+    db.pool.getConnection(function(err, connection) {
+        if(err) {
             next(err);
         } else {
-            res.render('photos', {albums: albums});
+            connection.query('SELECT * FROM albums', function(err, albums) {
+                if(err){
+                    next(err);
+                } else {
+                    res.render('photos', {albums: albums});
+                }
+                connection.release();
+            });
         }
-        db.connection.release();
     });
 
 };

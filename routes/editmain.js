@@ -6,13 +6,19 @@ exports.get = function (req, res, next) {
     if(!req.role || req.role != "admin"){
         next(new HttpError(403, "Доступ заборонено"));
     } else {
-        db.connection.query('SELECT main FROM main', function (err, main) {
-            if (err){
+        db.pool.getConnection(function(err, connection) {
+            if(err) {
                 next(err);
             } else {
-                res.render('editmain', {main: main[0].main});
+                connection.query('SELECT main FROM main', function (err, main) {
+                    if (err){
+                        next(err);
+                    } else {
+                        res.render('editmain', {main: main[0].main});
+                    }
+                    connection.release();
+                });
             }
-            db.connection.release();
         });
     }
 };
@@ -24,13 +30,19 @@ exports.post = function(req, res, next) {
             res.end('403');
            
         } else {
-            db.connection.query('UPDATE main SET  main = ? WHERE id = 1', [req.body.main], function (err) {
-                if (err) {
+            db.pool.getConnection(function(err, connection) {
+                if(err) {
                     next(err);
                 } else {
-                    res.send('done');
+                    connection.query('UPDATE main SET  main = ? WHERE id = 1', [req.body.main], function (err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            res.send('done');
+                        }
+                        connection.release();
+                    });
                 }
-                db.connection.release();
             });
         }
     }

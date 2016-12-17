@@ -20,13 +20,19 @@ exports.post = function(req, res, next) {
             res.end('403');
         } else {
             var time = new Date();
-            db.connection.query('INSERT INTO news (title, descrip, news, time) VALUES(?, ?, ?, ?)', [req.body.title, req.body.descrip, req.body.news, time], function (err) {
-                if (err) {
+            db.pool.getConnection(function(err, connection) {
+                if(err) {
                     next(err);
                 } else {
-                    res.end("done");
+                    connection.query('INSERT INTO news (title, descrip, news, time) VALUES(?, ?, ?, ?)', [req.body.title, req.body.descrip, req.body.news, time], function (err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            res.end("done");
+                        }
+                        connection.release();
+                    });
                 }
-                db.connection.release();
             });
         }
     }

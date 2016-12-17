@@ -3,14 +3,20 @@ var HttpError = require('error').HttpError;
 var db = require('db');
 
 exports.get = function (req, res, next) {
-    db.connection.query('SELECT main FROM main WHERE id = 1', function(err, main){
+    db.pool.getConnection(function(err, connection) {
         if(err) {
             next(err);
         } else {
-            res.render('main', {main: main}); 
+            connection.query('SELECT main FROM main WHERE id = 1', function(err, main){
+                if(err) {
+                    next(err);
+                } else {
+                    res.render('main', {main: main});
+                }
+                connection.release();
+            });
         }
-        db.connection.release();
-    });    
+    });
 };
 
 exports.post = function(req, res, next) {

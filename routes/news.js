@@ -3,13 +3,19 @@ var db = require('db');
 
 
 exports.get = function (req, res, next) {
-    db.connection.query('SELECT * FROM news', function(err, news) {
-        if(err){
+    db.pool.getConnection(function(err, connection) {
+        if(err) {
             next(err);
         } else {
-            res.render('news', {news: news});  
+            connection.query('SELECT * FROM news', function(err, news) {
+                if(err){
+                    next(err);
+                } else {
+                    res.render('news', {news: news});
+                }
+                connection.release();
+            });
         }
-        db.connection.release();
     });
 
 };

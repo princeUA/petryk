@@ -10,11 +10,19 @@ exports.reg = function(mail, name, password, login, img, callback) {
         }
         else {
             var hashedPass = passwordHash.generate(password);
-            db.connection.query('INSERT INTO users (mail, name, password, login, image) VALUES(?, ?, ?, ?, ?)', [mail, name, hashedPass, login, img], function(err) {
-                if (err) {
-                    callback(new AuthError(err));
+            db.pool.getConnection(function(err, connection) {
+                if(err) {
+                    next(err);
+                } else {
+                    connection.query('INSERT INTO users (mail, name, password, login, image) VALUES(?, ?, ?, ?, ?)', [mail, name, hashedPass, login, img], function(err) {
+                        if (err) {
+                            callback(new AuthError(err));
+                        } else {
+                            callback(null);
+                        }
+                        connection.release();
+                    });
                 }
-                callback(null);
             });
         }
     });
@@ -23,19 +31,25 @@ exports.reg = function(mail, name, password, login, img, callback) {
 };
 
 exports.check = function(mail, password, callback) {
-
-    db.connection.query('SELECT * FROM users WHERE mail = ?', [mail], function(err, user){
+    db.pool.getConnection(function(err, connection) {
         if(err) {
-            callback(err);
-        }
-        if(user[0]) {
-            if(passwordHash.verify(password, user[0].password)) {
-                callback(null, user);
-            } else {
-                callback("errLogin");
-            }
+            next(err);
         } else {
-            callback("errLogin");
+            connection.query('SELECT * FROM users WHERE mail = ?', [mail], function(err, user){
+                if(err) {
+                    callback(err);
+                }
+                if(user[0]) {
+                    if(passwordHash.verify(password, user[0].password)) {
+                        callback(null, user);
+                    } else {
+                        callback("errLogin");
+                    }
+                } else {
+                    callback("errLogin");
+                }
+                connection.release();
+            });
         }
     });
 };

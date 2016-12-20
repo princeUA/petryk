@@ -3,11 +3,18 @@ var HttpError = require('error').HttpError;
 var db = require('db');
 
 exports.get = function (req, res, next) {
-    db.connection.query('SELECT * FROM users', function(err, users){
+    db.pool.getConnection(function(err, connection) {
         if(err) {
             next(err);
         } else {
-            res.render('users', {users: users});
+            connection.query('SELECT * FROM users', function(err, users){
+                if(err) {
+                    next(err);
+                } else {
+                    res.render('users', {users: users});
+                }
+                connection.release();
+            });
         }
     });
 };

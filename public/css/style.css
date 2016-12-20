@@ -14,7 +14,9 @@ img {
 }
 .home,
 .news,
-.albums {
+.albums,
+.edit,
+.photo{
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 10px;
@@ -31,6 +33,8 @@ img {
 .albums {
 	text-align: center;
 	height: 250px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 .adm {
 	float: right;
@@ -52,11 +56,6 @@ li:hover {
 .time {
 	font-size: 12px;
 }
-li .active {
-     color: blue;
-     background-color: blue !important;
-     border-radius: 2px;
- }
 .userImg {
 	width: 150px;
 }
@@ -66,8 +65,7 @@ li .active {
 }
 
 .photoRow {
-    margin-top: 5px;
-    margin-bottom: 10px;
+
 }
 .addPhoto{
 	border: solid 1px lightskyblue;

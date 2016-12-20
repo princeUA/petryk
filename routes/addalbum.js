@@ -20,11 +20,18 @@ exports.post = function(req, res, next) {
             res.end('403');
         } else {
             var time = new Date();
-            db.connection.query('INSERT INTO albums (title, photo) VALUES(?, ?)', [req.body.title, req.body.photo], function (err) {
-                if (err) {
+            db.pool.getConnection(function(err, connection) {
+                if(err) {
                     next(err);
                 } else {
-                    res.end("done");
+                    connection.query('INSERT INTO albums (title, photo) VALUES(?, ?)', [req.body.title, req.body.photo], function (err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            res.end("done");
+                        }
+                        connection.release();
+                    });
                 }
             });
         }

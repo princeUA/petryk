@@ -32,7 +32,11 @@ block("JS2" , 'src="/js/gmaps.min.js"');%>
                 </div>
             </form>
         </div>
-        <div id="map"></div>
+        <div class="row">
+            <div class="col-md-7 col-sm-12">
+                <div id="map"></div>
+            </div>
+        </div>
         <script>
             var map = new GMaps({
                 el: '#map',
